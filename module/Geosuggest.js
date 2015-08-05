@@ -21,7 +21,8 @@ var Geosuggest = React.createClass({
       onSuggestSelect: function onSuggestSelect() {},
       location: null,
       radius: 0,
-      googleMaps: google && google.maps
+      googleMaps: google && google.maps,
+      types: []
     };
   },
 
@@ -63,7 +64,8 @@ var Geosuggest = React.createClass({
     this.state.autocompleteService.getPlacePredictions({
       input: this.state.userInput,
       location: this.props.location || new this.props.googleMaps.LatLng(0, 0),
-      radius: this.props.radius
+      radius: this.props.radius,
+      types: this.props.types
     }, (function (suggestsGoogle) {
       this.updateSuggests(suggestsGoogle);
     }).bind(this));
